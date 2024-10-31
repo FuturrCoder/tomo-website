@@ -59,24 +59,32 @@ const CLASSES = [
     description: "Honors Engineering Analysis 1",
     members: 56,
     url: "/classes/gen-eng-206-1"
+  },
+  {
+    id: 4,
+    title: "CONDUCT 393-0",
+    description: "Orchestral Organizations",
+    members: 77,
+    url: "/classes/conduct-393-0"
   }
 ];
 
 function ClassCard(props) {
   return (
-    <div className="group relative transition hover:-translate-y-1 h-full cursor-pointer">
+    <article className="group relative transition hover:-translate-y-1 h-full cursor-pointer">
       <a href={props.url}>
-        <article className="border-2 border-gray-200 rounded-2xl p-8 group-hover:shadow-md">
+        <div className="border-2 border-gray-200 rounded-2xl p-8 h-full group-hover:shadow-md">
           <h2 className="text-3xl text-neutral-black font-bold font-display">{props.title}</h2>
           <p className="text-md text-neutral-gray">{props.description}</p>
           <p className="mt-1 text-md text-neutral-gray">{props.members} members</p>
-        </article>
+        </div>
       </a>
       <button className="text-neutral-black hover:text-red-500 absolute top-4 right-4"
+              aria-label={`Remove ${props.title}`}
               onClick={props.handleRemove}>
         <FontAwesomeIcon icon={faTrashCan} size="lg"/>
       </button>
-    </div>
+    </article>
   );
 }
 
@@ -94,7 +102,7 @@ function App() {
       <NavBar/>
       <div className="px-8 py-10">
         <h1 className="text-5xl text-neutral-black font-extrabold font-display">Classes</h1>
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {classes.map((c, idx) => (
             <ClassCard {...c} handleRemove={() => handleRemove(idx)} key={c.id}/>
           ))}
