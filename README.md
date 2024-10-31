@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Tomo
+
+A website where NU students can find friends in their classes and organize study groups (DISC project fall 2024)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
