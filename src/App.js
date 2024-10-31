@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import {useState} from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
 
 function NavBar() {
   return (
@@ -62,19 +64,30 @@ const CLASSES = [
 
 function ClassCard(props) {
   return (
-    <a href={props.url}>
-      <article
-        className="border-2 border-gray-200 rounded-2xl p-8 transition hover:shadow-md hover:-translate-y-1 h-full">
-        <h2 className="text-3xl text-neutral-black font-bold font-display">{props.title}</h2>
-        <p className="text-md text-neutral-gray">{props.description}</p>
-        <p className="mt-1 text-md text-neutral-gray">{props.members} members</p>
-      </article>
-    </a>
+    <div className="group relative transition hover:-translate-y-1 h-full cursor-pointer">
+      <a href={props.url}>
+        <article className="border-2 border-gray-200 rounded-2xl p-8 group-hover:shadow-md">
+          <h2 className="text-3xl text-neutral-black font-bold font-display">{props.title}</h2>
+          <p className="text-md text-neutral-gray">{props.description}</p>
+          <p className="mt-1 text-md text-neutral-gray">{props.members} members</p>
+        </article>
+      </a>
+      <button className="text-neutral-black hover:text-red-500 absolute top-4 right-4"
+              onClick={props.handleRemove}>
+        <FontAwesomeIcon icon={faTrashCan} size="lg"/>
+      </button>
+    </div>
   );
 }
 
 function App() {
   const [classes, setClasses] = useState(CLASSES);
+
+  const handleRemove = (index) => {
+    const newClasses = [...classes];
+    newClasses.splice(index, 1);
+    setClasses(newClasses);
+  };
 
   return (
     <>
@@ -82,7 +95,9 @@ function App() {
       <div className="px-8 py-10">
         <h1 className="text-5xl text-neutral-black font-extrabold font-display">Classes</h1>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {classes.map((c) => (<ClassCard {...c} key={c.id}/>))}
+          {classes.map((c, idx) => (
+            <ClassCard {...c} handleRemove={() => handleRemove(idx)} key={c.id}/>
+          ))}
         </div>
       </div>
       <Footer/>
