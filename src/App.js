@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
 
@@ -96,6 +96,10 @@ function App() {
     newClasses.splice(index, 1);
     setClasses(newClasses);
   };
+
+  useEffect(() => {
+    console.log(classes);
+  }, [classes]);
 
   return (
     <>
