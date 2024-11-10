@@ -1,35 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
 import {useEffect, useState} from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
+import NavBar from "./NavBar";
+import ClassCard from "./ClassCard";
+import Footer from "./Footer";
 
-function NavBar() {
-  return (
-    <nav
-      className="flex flex-wrap justify-center items-center gap-4 border-b-2 border-b-gray-200 px-7 py-3 font-display">
-      <a href="/">
-        <img src={logo} width="40" alt="logo"/>
-      </a>
-      <a className="text-4xl font-extrabold text-primary" href="/">tomo</a>
-      <span className="sm:flex-grow"></span>
-      <div className="block md:inline">
-        <a className="text-2xl text-neutral-gray font-bold hover:text-primary" href="/classes">Classes</a>
-        <a className="text-2xl text-neutral-gray font-bold ml-8 hover:text-primary" href="/chats">Chats</a>
-        <a className="text-2xl text-neutral-gray font-bold ml-8 hover:text-primary" href="/profile">Profile</a>
-      </div>
-    </nav>
-  );
-}
-
-function Footer() {
-  return (
-    <div className="mt-48 px-8 py-5 border-t-2 border-t-gray-200 w-full flex flex-wrap gap-8">
-      <span className="text-neutral-gray text-sm">© 2024 Tomo</span>
-      <a href="/about" className="text-neutral-gray text-sm underline underline-offset-2">About</a>
-    </div>
-  );
-}
+const NAV_LINKS = [
+  {title: "Classes", url: "/classes"},
+  {title: "Chats", url: "/chats"},
+  {title: "Profile", url: "/profile"}
+];
 
 const CLASSES = [
   {
@@ -69,32 +48,11 @@ const CLASSES = [
   }
 ];
 
-function ClassCard(props) {
-  return (
-    <article className="group relative transition hover:-translate-y-1 h-full cursor-pointer">
-      <a href={props.url}>
-        <div className="border-2 border-gray-200 rounded-2xl p-8 h-full group-hover:shadow-md">
-          <h2 className="text-3xl text-neutral-black font-bold font-display">{props.title}</h2>
-          <p className="text-md text-neutral-gray">{props.description}</p>
-          <p className="mt-1 text-md text-neutral-gray">{props.members} members</p>
-        </div>
-      </a>
-      <button className="text-neutral-black hover:text-red-500 absolute top-4 right-4"
-              aria-label={`Remove ${props.title}`}
-              onClick={props.handleRemove}>
-        <FontAwesomeIcon icon={faTrashCan} size="lg"/>
-      </button>
-    </article>
-  );
-}
-
 function App() {
   const [classes, setClasses] = useState(CLASSES);
 
-  const handleRemove = (index) => {
-    const newClasses = [...classes];
-    newClasses.splice(index, 1);
-    setClasses(newClasses);
+  const handleRemove = (id) => {
+    setClasses(classes.filter(c => c.id !== id));
   };
 
   useEffect(() => {
@@ -103,13 +61,15 @@ function App() {
 
   return (
     <>
-      <NavBar/>
+      <NavBar links={NAV_LINKS} />
       <div className="px-8 py-10">
         <h1 className="text-5xl text-neutral-black font-extrabold font-display">Classes</h1>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-          {classes.map((c, idx) => (
-            <ClassCard {...c} handleRemove={() => handleRemove(idx)} key={c.id}/>
-          ))}
+          {classes.length === 0 ?
+            <p>No classes available.</p> :
+            classes.map((c) => (
+              <ClassCard {...c} handleRemove={() => handleRemove(c.id)} key={c.id}/>
+            ))}
         </div>
       </div>
       <Footer/>
