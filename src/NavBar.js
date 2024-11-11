@@ -11,9 +11,9 @@ function NavBar(props) {
       <Link className="text-4xl font-extrabold text-primary" to="/">tomo</Link>
       <span className="sm:flex-grow"></span>
       <div className="block md:inline">
-        {props.links.map((link) => (
+        {props.links.map((link, idx) => (
           <Link className="text-2xl text-neutral-gray font-bold hover:text-primary [&:not(:first-child)]:ml-8"
-             to={link.url}>
+             to={link.url} key={idx}>
             {link.title}
           </Link>
         ))}
