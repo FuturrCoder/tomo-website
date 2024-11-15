@@ -1,6 +1,7 @@
 import ClassCard from "./ClassCard";
 import CLASSES from "./example";
 import {useState} from "react";
+import H1 from "../components/H1";
 
 function Classes() {
   const [classes, setClasses] = useState(CLASSES);
@@ -11,7 +12,7 @@ function Classes() {
 
   return (
     <div className="px-8 py-10">
-      <h1 className="text-5xl text-neutral-black font-extrabold font-display">Classes</h1>
+      <H1>Classes</H1>
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
         {classes.length === 0 ?
           <p>No classes available.</p> :

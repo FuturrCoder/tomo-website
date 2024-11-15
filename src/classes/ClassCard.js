@@ -1,13 +1,14 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrashCan} from "@fortawesome/free-regular-svg-icons";
 import {Link} from "react-router-dom";
+import H2 from "../components/H2";
 
 function ClassCard(props) {
   return (
     <article className="group relative transition hover:-translate-y-1 h-full cursor-pointer">
       <Link to={`/classes/${props.url}`}>
         <div className="border-2 border-gray-200 rounded-2xl p-8 h-full group-hover:shadow-md">
-          <h2 className="text-3xl text-neutral-black font-bold font-display">{props.title}</h2>
+          <H2>{props.title}</H2>
           <p className="text-md text-neutral-gray">{props.description}</p>
           <p className="mt-1 text-md text-neutral-gray">{props.members} members</p>
         </div>
