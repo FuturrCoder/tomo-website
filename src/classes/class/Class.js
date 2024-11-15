@@ -1,3 +1,4 @@
+import {useMemo} from "react";
 import {useParams} from "react-router-dom";
 import CLASSES from "../example";
 import PersonCard from "./PersonCard";
@@ -6,7 +7,11 @@ import H1 from "../../components/H1";
 
 function Class() {
   const {classURL} = useParams();
-  let classData = CLASSES.find(c => c.url === classURL);
+
+  // if CLASSES was large, then this would be expensive so useMemo would be useful
+  const classData = useMemo(() => {
+    return CLASSES.find(c => c.url === classURL)
+  }, [classURL]);
 
   const [users, message] = useUsers();
 
