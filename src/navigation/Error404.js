@@ -1,9 +1,9 @@
-import H1 from "../components/H1";
+import {Title} from "../components/StyledTags";
 
 function Error404() {
   return (
     <div className="px-8 py-10">
-      <H1>404</H1>
+      <Title>404</Title>
       <p className="mt-3">Page not found</p>
     </div>
   );

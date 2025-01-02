@@ -1,7 +1,7 @@
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import NAV_LINKS from "../config/navbar.config";
 import {Outlet} from "react-router-dom";
+import NAV_LINKS from "./constants";
 
 function PageLayout() {
   return (

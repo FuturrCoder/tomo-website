@@ -1,11 +1,11 @@
 import {useParams} from "react-router-dom";
-import CLASSES from "../example";
+import CLASSES from "../classes/example";
 import PersonCard from "./PersonCard";
 import useUsers from "../../hooks/useUsers";
-import H1 from "../../components/H1";
 import Error404 from "../../navigation/Error404";
+import {Title} from "../../components/StyledTags";
 
-function Class() {
+function ClassDetail() {
   const {classURL} = useParams();
   const [users, message] = useUsers();
 
@@ -14,7 +14,7 @@ function Class() {
 
   return (
     <div className="px-8 py-10">
-      <H1>{classData.title}</H1>
+      <Title>{classData.title}</Title>
       <p className="mt-3 text-md text-neutral-gray">{classData.description}</p>
       <p className="mt-4 text-lg text-neutral-gray">{classData.members} members</p>
       <div className="mt-2 flex flex-nowrap gap-3 overflow-x-auto">
@@ -29,4 +29,4 @@ function Class() {
   );
 }
 
-export default Class;
+export default ClassDetail;
