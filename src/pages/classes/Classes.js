@@ -1,4 +1,4 @@
-import {Title} from "../../components/StyledTags";
+import { Title } from "../../components/StyledTags";
 import ClassesGrid from "./ClassesGrid";
 
 function Classes() {

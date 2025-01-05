@@ -1,5 +1,5 @@
 import logo from "../logo.svg";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function NavBar(props) {
   return (
@@ -13,7 +13,7 @@ function NavBar(props) {
       <div className="block md:inline">
         {props.links.map((link, idx) => (
           <Link className="text-2xl text-neutral-gray font-bold hover:text-primary [&:not(:first-child)]:ml-8"
-             to={link.url} key={idx}>
+                to={link.url} key={idx}>
             {link.title}
           </Link>
         ))}

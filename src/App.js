@@ -1,5 +1,5 @@
 import "./App.css";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageLayout from "./navigation/PageLayout";
 import Classes from "./pages/classes/Classes";
 import ClassDetail from "./pages/class-detail/ClassDetail";

@@ -6,7 +6,7 @@ function ActionButtons() {
       <ActionButton to="/classes" text="Get Started" className="bg-primary text-white"/>
       <ActionButton to="/classes" text="I have an account"/>
     </div>
-  )
+  );
 }
 
 export default ActionButtons;

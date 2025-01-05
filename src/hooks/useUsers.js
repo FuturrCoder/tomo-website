@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 const useUsers = () => {
   const [users, setUsers] = useState([]);
@@ -21,6 +21,6 @@ const useUsers = () => {
   }, []);
 
   return [users, message];
-}
+};
 
 export default useUsers;
