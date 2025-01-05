@@ -1,5 +1,5 @@
 import ClassCard from "./ClassCard";
-import {useState} from "react";
+import { useState } from "react";
 import CLASSES from "./example";
 
 function ClassesGrid() {
@@ -17,7 +17,7 @@ function ClassesGrid() {
           <ClassCard {...c} handleRemove={() => handleRemove(c.id)} key={c.id}/>
         ))}
     </div>
-  )
+  );
 }
 
 export default ClassesGrid;

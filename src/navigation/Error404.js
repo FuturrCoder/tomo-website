@@ -1,4 +1,4 @@
-import {Title} from "../components/StyledTags";
+import { Title } from "../components/StyledTags";
 
 function Error404() {
   return (

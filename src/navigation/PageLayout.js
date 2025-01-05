@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import NAV_LINKS from "./constants";
 
 function PageLayout() {
