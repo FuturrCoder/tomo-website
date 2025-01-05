@@ -1,5 +1,5 @@
-export function HeroText() {
-  return <h1 className="text-6xl text-primary font-extrabold font-display">Connect. Chat. Study.</h1>;
+export function HeroText({ children }) {
+  return <h1 className="text-6xl text-primary font-extrabold font-display">{children}</h1>;
 }
 
 export function Title({ children }) {

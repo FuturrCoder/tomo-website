@@ -5,6 +5,7 @@ import Classes from "./pages/classes/Classes";
 import ClassDetail from "./pages/class-detail/ClassDetail";
 import Error404 from "./navigation/Error404";
 import Home from "./pages/home/Home";
+import About from "./pages/about/About";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route element={<PageLayout/>}>
           <Route path="/" element={<Home/>}/>
+          <Route path="/about" element={<About/>}/>
           <Route path="/classes" element={<Classes/>}/>
           <Route path="/classes/:classURL" element={<ClassDetail/>}/>
           <Route path="*" element={<Error404/>}/>
